@@ -1,0 +1,191 @@
+<body class="h-screen">
+
+
+
+  <header  class="scale-90 bg-orange-400 fixed top-0 left-0 w-full px-20 z-50 transition !duration-200 ease-in-out hover:text-slate-100 hover:scale-100  hover:!bg-indigo-500" [ngClass]="{'!bg-transparent !duration-200': scrollPosition >= 610}">
+
+    <div id="info" class="flex justify-around items-center">
+      <a href="landing-page.component.html" class="text-xl font-bold"><img src="../../../assets/logoColorTransparente.png" alt="" class="h-20 w-20"></a>
+      <a href=""><img src="../../../assets/logoTransparenteNegro.png" alt="" class="h-20 w-36"></a>
+      <span > MX:(929) 556-2746  </span>
+    </div>
+    <hr>
+
+    <!-- <nav class="flex justify-center">
+      <a href="#home" class="p-3 relative">Home</a>
+      <a class="p-3 relative" (click)="veo()">Habitaciones</a>
+      <a href="Servicios" class="p-3 relative">Servicios</a>
+      <a href="Contacto" class="p-3 relative">Contacto</a>
+      <a href="Login" class="p-3 relative" (click)="redireccionar()">Login</a>
+      <a href="Login" class="p-3 relative" (click)="redireccionar()">{{accessData}}</a>
+
+    </nav> -->
+
+    <nav mat-tab-nav-bar>
+      <a mat-tab-link *ngFor="let link of links; index as i" [href]="link" (click)="activeLink = link"
+         [active]="activeLink == link" [@tabAnimation]> {{titles[i]}}
+      </a>
+    </nav>
+
+  </header>
+
+
+
+<!-- <nav mat-tab-nav-bar>
+  <a mat-tab-link *ngFor="let link of links; index as i" [href]="link" (click)="activeLink = link"
+     [active]="activeLink == link" [@tabAnimation]> {{titles[i]}}
+  </a>
+</nav> -->
+
+
+<!-- Home -->
+<button mat-fab class="!z-[1000] !fixed bottom-16 !right-8 !bg-transparent !text-black" aria-label="Example icon button with a delete icon" (click)="scroll(perro)" [ngClass]="{'!bg-yellow-200 !scale-100 !duration-200': scrollPosition >= 610}">
+  <mat-icon>keyboard_arrow_up</mat-icon>
+</button>
+
+
+<!-- Instagram -->
+<button mat-fab [style.bottom]="instagram" class="!z-[1000] !fixed !bottom-32 !right-8 !bg-transparent !text-black" aria-label="Example icon button with a delete icon" (click)="scroll(perro)" [ngClass]="{'!bg-gradient-to-tr from-pink-500 to-yellow-500 !scale-100 !duration-200': scrollPosition >= 610}">
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"></path>
+    <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+    <path d="M16.5 7.5l0 .01"></path>
+ </svg>
+</button>
+
+
+
+<!-- Facebook -->
+<button mat-fab class="!z-[1000] !fixed bottom-48 !right-8 !text-black" aria-label="Example icon button with a delete icon" (click)="scroll(perro)" [ngClass]="scrollPosition >= 610 ?  '!bg-blue-400 !scale-100 !duration-200' : '!bg-transparent'">
+  <mat-icon>facebook</mat-icon>
+</button>
+
+
+<!-- Airbnb -->
+<button mat-fab class="!z-[1000] !fixed bottom-64 !right-8 !bg-transparent !text-black" aria-label="Example icon button with a delete icon" (click)="scroll(perro)" [ngClass]="{'!bg-red-400 !scale-100 !duration-200': scrollPosition >= 610}">
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-airbnb" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M12 10c-2 0 -3 1 -3 3c0 1.5 1.494 3.535 3 5.5c1 1 1.5 1.5 2.5 2s2.5 1 4.5 -.5s1.5 -3.5 .5 -6s-2.333 -5.5 -5 -9.5c-.834 -1 -1.5 -1.5 -2.503 -1.5c-1 0 -1.623 .45 -2.497 1.5c-2.667 4 -4 7 -5 9.5s-1.5 4.5 .5 6s3.5 1 4.5 .5s1.5 -1 2.5 -2c1.506 -1.965 3 -4 3 -5.5c0 -2 -1 -3 -3 -3z"></path>
+ </svg>
+</button>
+
+
+
+
+
+
+
+
+  <video autoplay loop [muted]="true" plays-inline class="relative w-screen z-[-1] snap-start" id="section1" #perro>
+    <source src="../../assets/Video_landing.mp4" type="video/mp4">
+  </video>
+
+
+  <!-- Version clasica de las cards y su posicionamiento -->
+  <!-- <div class="bg-white !w-screen !h-screen relative z-10 py-44 px-20 flex flex-wrap gap-9 justify-center align-middle" id="section2" #gato>
+
+
+    <app-cards-habitaciones class="md:w-3/10 hover:scale-110 transition-transform" [habitaciones]="habitaciones"></app-cards-habitaciones>
+    <app-cards-habitaciones class="md:w-3/10 hover:scale-110 transition-transform" [habitaciones]="habitaciones"></app-cards-habitaciones>
+    <app-cards-habitaciones class="md:w-3/10 hover:scale-110 transition-transform" [habitaciones]="habitaciones"></app-cards-habitaciones>
+
+
+
+
+  </div> -->
+
+
+
+<!-- Version SNAP de las cards y su posicionamiento -->
+
+  <!-- <div class="bg-white !w-screen !h-screen relative z-10 py-44 px-20 flex flex-wrap gap-9 justify-center align-middle ">
+    <div class="relative w-screen h-96 flex gap-6 snap-x overflow-x-scroll overflow-y-auto pb-14 snap-mandatory">
+
+
+      <div class= "first:pl-8 last:pr-8 overflow-y-visible">
+        <div class="shrink-0 w-4 sm:w-48"></div>
+      </div>
+      <div class="shrink-0  first:pl-8 last:pr-8 transition-transform" >
+         <app-cards-habitaciones class="md:w-3/10 w-1/3" [habitaciones]="habitaciones"></app-cards-habitaciones>
+      </div>
+      <div class="shrink-0 snap-center first:pl-8 last:pr-8  transition-transform">
+         <app-cards-habitaciones class="md:w-3/10" [habitaciones]="habitaciones"></app-cards-habitaciones>
+      </div>
+      <div class=" shrink-0  first:pl-8 last:pr-8  transition-transform" >
+         <app-cards-habitaciones class="md:w-3/10" [habitaciones]="habitaciones"></app-cards-habitaciones>
+      </div>
+      <div class="shrink-0">
+        <div class="shrink-0 w-4 sm:w-48"></div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="bg-white !w-screen !h-screen relative z-10 py-44 px-20 flex flex-wrap gap-9 justify-center align-middle ">
+
+  <div class="relative w-full flex gap-6 snap-x snap-mandatory overflow-x-auto pb-4 pt-14">
+    <!-- <div class="snap-center shrink-0">
+      <div class="shrink-0 w-4 sm:w-48"></div>
+    </div> -->
+    <div class="snap-center shrink-0 first:pl-8 last:pr-8">
+      <app-cards-habitaciones class="md:w-2/5 w-2/3" [habitaciones]="habitaciones"></app-cards-habitaciones>
+    </div>
+    <div class="snap-center shrink-0 first:pl-8 last:pr-8">
+      <app-cards-habitaciones class="md:w-2/5 w-2/3" [habitaciones]="habitaciones"></app-cards-habitaciones>
+    </div>
+    <div class="snap-center shrink-0 first:pl-8 last:pr-8">
+      <app-cards-habitaciones class="md:w-2/5 w-2/3" [habitaciones]="habitaciones"></app-cards-habitaciones>
+    </div>
+    <div class="snap-center shrink-0 first:pl-8 last:pr-8">
+      <app-cards-habitaciones class="md:w-2/5 w-2/3" [habitaciones]="habitaciones"></app-cards-habitaciones>
+    </div>
+    <!-- <div class="snap-center shrink-0">
+      <div class="shrink-0 w-4 sm:w-48"></div>
+    </div> -->
+  </div>
+
+</div>
+
+
+
+
+  <div class="bg-gray-200 !w-screen !h-2/3">
+    <footer id="contacto" >
+      <div class="container mx-auto p-4">
+        <div class="text-center">
+          <h2 class="text-3xl font-semibold text-gray-800 mb-2">Contacto</h2>
+          <p class="text-lg text-gray-600">¡Estamos aquí para ayudarte!</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+          <!-- Información de contacto -->
+          <div class="text-gray-800">
+            <h3 class="text-xl font-semibold mb-2">Información de Contacto</h3>
+            <p><strong>Dirección:</strong> 123 Calle Principal, Ciudad</p>
+            <p><strong>Teléfono:</strong> (123) 456-7890</p>
+            <p><strong>Correo Electrónico:</strong> info@example.com</p>
+          </div>
+          <!-- Horario de atención -->
+          <div class="text-gray-800">
+            <h3 class="text-xl font-semibold mb-2">Horario de Atención</h3>
+            <p><strong>Lunes a Viernes:</strong> 9:00 AM - 6:00 PM</p>
+            <p><strong>Sábados:</strong> 10:00 AM - 4:00 PM</p>
+            <p><strong>Domingos:</strong> Cerrado</p>
+          </div>
+          <!-- Redes sociales -->
+          <div class="text-gray-800">
+            <h3 class="text-xl font-semibold mb-2">Redes Sociales</h3>
+            <a href="#" class="text-indigo-500 hover:underline">Facebook</a><br>
+            <a href="#" class="text-indigo-500 hover:underline">Twitter</a><br>
+            <a href="#" class="text-indigo-500 hover:underline">Instagram</a>
+          </div>
+          <!-- Mapa -->
+          <div class="text-gray-800">
+            <h3 class="text-xl font-semibold mb-2">Ubicación</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12345.67890!2d-75.123456!3d40.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDA2JzA5LjMiTiA3NcKwMzUnMjguMiJX!5e0!3m2!1sen!2sus!4v1634109848203!5m2!1sen!2sus" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+
