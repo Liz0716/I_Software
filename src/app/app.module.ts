@@ -8,13 +8,15 @@ import { MaterialModule } from './material/material.module';
 
 import { PublicComponent } from './public/public.component';
 import { GuiComponent } from './gui/gui.component';
+import { PrivateComponent } from './private/private.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PublicComponent,
-    GuiComponent
+    GuiComponent,
+    PrivateComponent
   ],
   imports: [
     BrowserModule,
