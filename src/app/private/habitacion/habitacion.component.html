@@ -1,0 +1,83 @@
+<form [formGroup]="habitacionForm" (ngSubmit)="guardarHabitacion()" class="shadow-md p-4">
+  <div class="mb-4">
+    <mat-form-field class="w-full">
+      <mat-label for="nombre">Nombre:</mat-label>
+      <input matInput type="text" id="nombre" formControlName="nombre" required>
+    </mat-form-field>
+  </div>
+  <div class="mb-4">
+    <mat-form-field class="w-full">
+      <mat-label for="capacidad">Capacidad:</mat-label>
+      <input matInput type="number" id="capacidad" formControlName="capacidad" required>
+    </mat-form-field>
+  </div>
+  <div class="mb-4">
+    <mat-form-field class="w-full">
+      <mat-label for="cama">Camas:</mat-label>
+      <input matInput type="text" id="cama" formControlName="cama" required>
+    </mat-form-field>
+  </div>
+  <div class="mb-4">
+    <mat-form-field class="w-full">
+      <mat-label for="tipo">Tipo:</mat-label>
+      <mat-select id="tipo" formControlName="tipo" required>
+        <mat-option value="junior">Junior</mat-option>
+        <mat-option value="platinum">Platinum</mat-option>
+        <mat-option value="master">Master</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="mb-4">
+    <mat-form-field class="w-full">
+      <mat-label for="costo">Costo por noche:</mat-label>
+      <input matInput type="number" id="costo" formControlName="costo" required>
+    </mat-form-field>
+  </div>
+  <div class="mb-4">
+    <mat-checkbox id="ocupada" formControlName="ocupada">Ocupada</mat-checkbox>
+  </div>
+  <div class="mb-4">
+    <mat-form-field class="w-full">
+      <mat-label for="extensionTelefonica">Extensión Telefónica:</mat-label>
+      <input matInput type="text" id="extensionTelefonica" formControlName="extensionTelefonica" required>
+    </mat-form-field>
+  </div>
+  <div class="mb-4">
+    <mat-form-field class="w-full">
+      <mat-label for="descripcion">Descripcion:</mat-label>
+      <input matInput type="text" id="descripcion" formControlName="descripcion" required>
+    </mat-form-field>
+  </div>
+  <div class="mb-4">
+    <mat-form-field class="w-full">
+      <mat-label for="imagenes">Imagen o URL:</mat-label>
+      <input matInput type="file" (change)="onFileChange($event)" id="imagenes" formControlName="imagenes">
+    </mat-form-field>
+  </div>
+  <div *ngIf="habitacionForm.get('imagenes')?.value" class="mb-4">
+    <p>{{ habitacionForm.get('imagenes')?.value }}</p>
+  </div>
+  <div class="mb-4" formArrayName="inventario" *ngIf="habitacionForm.get('inventario')">
+    <div *ngFor="let item of habitacionForm.get('inventario'); let i = index" [formGroupName]="i">
+      <mat-form-field class="w-full">
+        <mat-label for="inventarioItem">Objetos:</mat-label>
+        <input matInput type="text" id="inventarioItem" formControlName="nombre">
+      </mat-form-field>
+      <mat-form-field class="w-full">
+        <mat-label for="inventarioCantidad">Cantidad:</mat-label>
+        <input matInput type="number" id="inventarioCantidad" formControlName="cantidad">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="mb-4" formArrayName="servicios">
+    <div *ngFor="let item of habitacionForm.get('servicios'); let i = index" [formGroupName]="i">
+      <mat-form-field class="w-full">
+        <mat-label for="servicioNombre">Servicio:</mat-label>
+        <input matInput type="text" id="servicioNombre" formControlName="nombre">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="mb-6">
+    <button type="submit" mat-flat-button color="primary">Guardar</button>
+  </div>
+</form>

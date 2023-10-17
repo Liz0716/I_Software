@@ -7,16 +7,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 
 import { PublicComponent } from './public/public.component';
-import { GuiComponent } from './gui/gui.component';
 import { PrivateComponent } from './private/private.component';
+import { HabitacionComponent } from './private/habitacion/habitacion.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PublicComponent,
-    GuiComponent,
-    PrivateComponent
+    PrivateComponent,
+    HabitacionComponent
   ],
   imports: [
     BrowserModule,
